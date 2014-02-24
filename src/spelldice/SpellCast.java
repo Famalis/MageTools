@@ -20,6 +20,7 @@ public class SpellCast {
     public boolean vulgarWithObs = false;
     public Integer essence = 0;
     public boolean will = false;
+    public Integer destiny = 0;
     
     public SpellCast() {
         
