@@ -26,6 +26,7 @@ public class Player extends Mage{
     
     private String name;
     private String description;
+    private int destiny = 0;
     
     public Player() {
         super();
@@ -115,6 +116,14 @@ public class Player extends Mage{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getDestiny() {
+        return destiny;
+    }
+
+    public void setDestiny(int destiny) {
+        this.destiny = destiny;
     }
     
 }

@@ -47,8 +47,9 @@ public class MainFrame extends javax.swing.JFrame {
         }
         stCombo.removeAllItems();
         for (int i = -10; i<=10; i++) {
-            stCombo.addItem(i);
+            stCombo.addItem(i);            
         }
+        stCombo.setSelectedItem(0);
         essenceCombo.removeAllItems();
         for (int i = 0; i<=10; i++) {
             essenceCombo.addItem(i);
@@ -405,7 +406,8 @@ public class MainFrame extends javax.swing.JFrame {
                         selectedPlayer.getSphereList().get(i)+"");
             }
             selArete.setText(selectedPlayer.getArete()+"");
-            
+            destinyCombo.setSelectedItem(selectedPlayer.getDestiny());
+            System.out.println(selectedPlayer.getDestiny());
         } catch (NullPointerException nullex) {
             System.err.println("Null pointer for playerCombo selection. If you just ran the program, that this is normal");
         }
