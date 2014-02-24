@@ -31,7 +31,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
-        this.setTitle("World of Darkness - Mage: the Ascension tools");
+        this.setTitle("World of Darkness - Mage: the Ascension tools by Sergio Cosentino");
         needCombo.removeAllItems();
         for (int i = 1; i<=30; i++) {
             needCombo.addItem(i);
