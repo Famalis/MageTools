@@ -78,7 +78,7 @@ public class MageCreator {
         Mage m = this.generateMage(spherePoints, arete);
         
         String result = "";
-        result+="Arete: "+m.arete+"\n";
+        result+="Arete: "+m.arete+"\n--------------------\n";
         for (int i = 0; i<9; i++) {
             result+=Mage.sphereNames[i]+": "+m.sphereList.get(i)+"\n";
         }
