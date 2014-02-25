@@ -400,7 +400,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Desitny:"/>
+        <Property name="text" type="java.lang.String" value="Przeznaczenie"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="destinyCombo">

@@ -31,7 +31,8 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
-        this.setTitle("World of Darkness - Mage: the Ascension tools by Sergio Cosentino");
+        //this.setTitle("World of Darkness - Mage: the Ascension tools by Sergio Cosentino");
+        this.setTitle("Świat Mroku - Mag: Wstąpienie zestaw narzędzi przez Sergio Cosentino");
         needCombo.removeAllItems();
         for (int i = 1; i<=30; i++) {
             needCombo.addItem(i);
@@ -208,7 +209,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Desitny:");
+        jLabel9.setText("Przeznaczenie");
 
         destinyCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -407,6 +408,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
             selArete.setText(selectedPlayer.getArete()+"");
             destinyCombo.setSelectedItem(selectedPlayer.getDestiny());
+            areteCombo.setSelectedItem(selectedPlayer.getArete());
             System.out.println(selectedPlayer.getDestiny());
         } catch (NullPointerException nullex) {
             System.err.println("Null pointer for playerCombo selection. If you just ran the program, that this is normal");

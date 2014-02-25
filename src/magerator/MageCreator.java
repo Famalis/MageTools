@@ -39,9 +39,15 @@ public class MageCreator {
             }
             int index = randomIndex.intValue();
             int value = randomValue.intValue();
+            if(value<0){
+                value = 0;
+            }
             if(m.sphereList.get(index)>0) {                
                 if(m.sphereList.get(index)+value>max) {
                     int diff = max - m.sphereList.get(index);
+                    if(diff<0) {
+                        diff = 0;
+                    }
                     spherePoints -= diff;
                     value = diff;
                     m.sphereList.set(index, 
@@ -53,9 +59,10 @@ public class MageCreator {
                 }
             } else {
                 m.sphereList.set(index, value);
-                spherePoints -= randomValue;
+                spherePoints -= value;
             }
             System.out.println(Mage.sphereNames[index]+" is now "+m.sphereList.get(index));
+            System.out.println(" - "+value);
             System.out.println(spherePoints+" sphere points remaining");
             
             
