@@ -42,7 +42,7 @@ public class PlayersPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Stwórz kartę");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -56,7 +56,7 @@ public class PlayersPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,7 +66,7 @@ public class PlayersPanel extends javax.swing.JPanel {
                 .addContainerGap(238, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Main Panel", jPanel1);
+        jTabbedPane1.addTab("Panel główny", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
