@@ -19,10 +19,11 @@ public class MageCreator {
         } else if(max*9<spherePoints ) {
             spherePoints=max*9;
         }
-        //System.out.println(spherePoints);
+        System.out.println(spherePoints);
         m.arete = arete;
         List<Long> usedSpheres = new ArrayList<>();
         while(spherePoints>0) {
+            System.out.println(spherePoints);
             Long randomIndex = Math.round(Math.random()*8);
             if(usedSpheres.contains(randomIndex)) {
                 int tmpIndex = randomIndex.intValue();
@@ -61,9 +62,9 @@ public class MageCreator {
                 m.sphereList.set(index, value);
                 spherePoints -= value;
             }
-            System.out.println(Mage.sphereNames[index]+" is now "+m.sphereList.get(index));
-            System.out.println(" - "+value);
-            System.out.println(spherePoints+" sphere points remaining");
+            //System.out.println(Mage.sphereNames[index]+" is now "+m.sphereList.get(index));
+            //System.out.println(" - "+value);
+            //System.out.println(spherePoints+" sphere points remaining");
             
             
         }
