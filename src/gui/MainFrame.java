@@ -158,7 +158,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel6.setText("Imię/Nazwa");
 
-        jButton2.setText("Players");
+        jButton2.setText("Gracze");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
