@@ -107,11 +107,14 @@ public class Mechanics {
         if (spellCast.destiny > 0) {
             result.data += " destiny rolls: ";
             for (int i = 0; i < spellCast.destiny; i++) {
-                if (results[i] >= ST) {
+                if (results[i] >= ST || result.success) {
                     break;
                 } else {
                     int ran = (int) (Math.random() * 10 + 1);
                     result.data += "["+results[i]+ "] to "+ran + ", ";
+                    if(results[i] == 1) {
+                        successCounter++;
+                    }
                     results[i] = ran;
                     if (ran >= ST) {
                         successCounter++;
