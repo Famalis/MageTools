@@ -34,11 +34,11 @@ public class MainFrame extends javax.swing.JFrame {
         //this.setTitle("World of Darkness - Mage: the Ascension tools by Sergio Cosentino");
         this.setTitle("Świat Mroku - Mag: Wstąpienie zestaw narzędzi przez Sergio Cosentino");
         needCombo.removeAllItems();
-        for (int i = 1; i<=30; i++) {
+        for (int i = 1; i <= 30; i++) {
             needCombo.addItem(i);
-        }  
+        }
         areteCombo.removeAllItems();
-        for (int i = 1; i<=10; i++) {
+        for (int i = 1; i <= 10; i++) {
             areteCombo.addItem(i);
         }
         Player.Load();
@@ -47,16 +47,16 @@ public class MainFrame extends javax.swing.JFrame {
             playerCombo.addItem(pkey);
         }
         stCombo.removeAllItems();
-        for (int i = -10; i<=10; i++) {
-            stCombo.addItem(i);            
+        for (int i = -10; i <= 10; i++) {
+            stCombo.addItem(i);
         }
         stCombo.setSelectedItem(0);
         essenceCombo.removeAllItems();
-        for (int i = 0; i<=10; i++) {
+        for (int i = 0; i <= 10; i++) {
             essenceCombo.addItem(i);
         }
         destinyCombo.removeAllItems();
-        for (int i = 0; i<=5; i++) {
+        for (int i = 0; i <= 5; i++) {
             destinyCombo.addItem(i);
         }
         int counter = 0;
@@ -64,15 +64,42 @@ public class MainFrame extends javax.swing.JFrame {
             JLabel label = new JLabel(sname);
             selPlayerPanel.setLayout(new BoxLayout(selPlayerPanel, BoxLayout.PAGE_AXIS));
             selPlayerPanel.add(label);
-            JTextField text = new JTextField("0");            
+            JTextField text = new JTextField("0");
             selPlayerPanel.add(text);
             selSphereLvls.add(text);
             selSphereLabels.add(label);
-            
+
         }
         selPlayerPanel.add(new JLabel("Arete"));
         selArete = new JTextField("1");
         selPlayerPanel.add(selArete);
+        themesCombo.removeAllItems();
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                themesCombo.addItem(info.getClassName());
+            }
+            String[] jTatooThemes = {
+            "com.jtattoo.plaf.acryl.AcrylLookAndFeel",
+            "com.jtattoo.plaf.aero.AeroLookAndFeel",
+            "com.jtattoo.plaf.aluminium.AluminiumLookAndFeel",
+            "com.jtattoo.plaf.bernstein.BernsteinLookAndFeel",
+            "com.jtattoo.plaf.aluminium.AluminiumLookAndFeel",
+            "com.jtattoo.plaf.fast.FastLookAndFeel",
+            "com.jtattoo.plaf.graphite.GraphiteLookAndFeel",
+            "com.jtattoo.plaf.hifi.HiFiLookAndFeel",
+            "com.jtattoo.plaf.luna.LunaLookAndFeel",
+            "com.jtattoo.plaf.mcwin.McWinLookAndFeel",
+            "com.jtattoo.plaf.mint.MintLookAndFeel",
+            "com.jtattoo.plaf.noire.NoireLookAndFeel",
+            "com.jtattoo.plaf.smart.SmartLookAndFeel",
+            "com.jtattoo.plaf.texture.TextureLookAndFeel"};
+            for (String themePath : jTatooThemes) {
+                themesCombo.addItem(themePath);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         pack();
     }
 
@@ -115,6 +142,9 @@ public class MainFrame extends javax.swing.JFrame {
         essenceCombo = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
         destinyCombo = new javax.swing.JComboBox();
+        themesCombo = new javax.swing.JComboBox();
+        jButton3 = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
 
         jTextField2.setText("jTextField2");
 
@@ -188,11 +218,11 @@ public class MainFrame extends javax.swing.JFrame {
         selPlayerPanel.setLayout(selPlayerPanelLayout);
         selPlayerPanelLayout.setHorizontalGroup(
             selPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         selPlayerPanelLayout.setVerticalGroup(
             selPlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         stCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -213,59 +243,76 @@ public class MainFrame extends javax.swing.JFrame {
 
         destinyCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        themesCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        themesCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                themesComboActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Change Theme");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(playerCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(selPlayerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 28, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(playerCombo, 0, 125, Short.MAX_VALUE)
+                            .addComponent(selPlayerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sphereCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(needCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(areteCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jLabel7)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sphereCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
+                                .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(essenceCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(needCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(willCheck))
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(areteCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel9)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(destinyCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(stCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(essenceCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(willCheck))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(destinyCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 3, Short.MAX_VALUE))))
+                    .addComponent(jSeparator2)
+                    .addComponent(themesCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -305,40 +352,48 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(generateMage)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTabbedPane1))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jTabbedPane1)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(playerCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(playerCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(selPlayerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(sphereCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(needCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(areteCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(stCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(essenceCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(willCheck))
+                                .addGap(4, 4, 4)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton1)
+                                    .addComponent(jLabel9)
+                                    .addComponent(destinyCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(12, 12, 12)
+                                .addComponent(jScrollPane1))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selPlayerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 3, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(sphereCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(needCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(areteCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2))
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(stCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(essenceCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(willCheck))
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel9)
-                            .addComponent(destinyCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(themesCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1)))
-                .addContainerGap())
+                        .addComponent(jButton3)
+                        .addGap(22, 22, 22))))
         );
 
         pack();
@@ -348,7 +403,7 @@ public class MainFrame extends javax.swing.JFrame {
         SpellCast sc = new SpellCast();
         sc.maxSphere = Integer.parseInt(sphereCombo.getSelectedItem().toString());
         sc.requiredSuccesses = Integer.parseInt(needCombo.getSelectedItem().toString());
-        sc.essence = (Integer)(essenceCombo.getSelectedItem());
+        sc.essence = (Integer) (essenceCombo.getSelectedItem());
         sc.will = willCheck.isSelected();
         if (jComboBox1.getSelectedIndex() == 0) {
             sc.situation = SpellCast.ACCIDENTAL;
@@ -357,10 +412,10 @@ public class MainFrame extends javax.swing.JFrame {
         } else {
             sc.situation = SpellCast.VULGAR_WITH_OBSERVER;
         }
-        sc.destiny = (Integer)destinyCombo.getSelectedItem();
+        sc.destiny = (Integer) destinyCombo.getSelectedItem();
         SpellResult r = mechanics.spellTest(sc,
                 Integer.parseInt(areteCombo.getSelectedItem().toString()),
-                (Integer)stCombo.getSelectedItem());
+                (Integer) stCombo.getSelectedItem());
         Date now = Calendar.getInstance().getTime();
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
         String text = jTextArea1.getText();
@@ -378,7 +433,7 @@ public class MainFrame extends javax.swing.JFrame {
         for (Component c : jTabbedPane1.getComponents()) {
             if (c.getName().equals(name)) {
                 exists = true;
-                panel = (CreateMagePanel)c;
+                panel = (CreateMagePanel) c;
             }
         }
         if (exists) {
@@ -402,19 +457,19 @@ public class MainFrame extends javax.swing.JFrame {
     private void playerComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerComboActionPerformed
         try {
             selectedPlayer = Player.getPersistance().get(playerCombo.getSelectedItem().toString());
-            for (int i = 0; i<selSphereLvls.size(); i++) {
+            for (int i = 0; i < selSphereLvls.size(); i++) {
                 selSphereLvls.get(i).setText(
-                        selectedPlayer.getSphereList().get(i)+"");
+                        selectedPlayer.getSphereList().get(i) + "");
             }
-            selArete.setText(selectedPlayer.getArete()+"");
+            selArete.setText(selectedPlayer.getArete() + "");
             destinyCombo.setSelectedItem(selectedPlayer.getDestiny());
             areteCombo.setSelectedItem(selectedPlayer.getArete());
             System.out.println(selectedPlayer.getDestiny());
         } catch (NullPointerException nullex) {
             System.err.println("Null pointer for playerCombo selection. If you just ran the program, that this is normal");
         }
-        
-        
+
+
     }//GEN-LAST:event_playerComboActionPerformed
 
     private void stComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stComboActionPerformed
@@ -425,6 +480,27 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_essenceComboActionPerformed
 
+    private void themesComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themesComboActionPerformed
+
+    }//GEN-LAST:event_themesComboActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String theme = (String) themesCombo.getSelectedItem();
+        try {
+            this.dispose();
+            javax.swing.UIManager.setLookAndFeel(theme);
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    singleton = new MainFrame();
+                    singleton.setResizable(true);
+                    singleton.setVisible(true);
+                }
+            });
+        } catch (Exception e) {
+            System.err.println("Error changeing theme\n" + e);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -434,12 +510,18 @@ public class MainFrame extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+
         try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                System.out.println(info.getName());
+            }
+
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
+
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -455,7 +537,9 @@ public class MainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                singleton = new MainFrame();
+                singleton.setResizable(true);
+                singleton.setVisible(true);
             }
         });
     }
@@ -469,6 +553,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton generateMage;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -481,6 +566,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField2;
@@ -489,6 +575,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel selPlayerPanel;
     private javax.swing.JComboBox sphereCombo;
     private javax.swing.JComboBox stCombo;
+    private javax.swing.JComboBox themesCombo;
     private javax.swing.JCheckBox willCheck;
     // End of variables declaration//GEN-END:variables
     private final Mechanics mechanics = new Mechanics();
@@ -497,4 +584,5 @@ public class MainFrame extends javax.swing.JFrame {
     private final List<JLabel> selSphereLabels = new ArrayList<>();
     private List<JTextField> selSphereLvls = new ArrayList<>();
     private JTextField selArete;
+    private static MainFrame singleton;
 }
